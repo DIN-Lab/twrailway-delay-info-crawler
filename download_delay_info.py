@@ -36,12 +36,11 @@ insertion_sql = '''
 for entry in response_data:
     delay_time = int(entry['DelayTime'])
 
-    if delay_time > 0:
-        train_id = int(entry['TrainNo'])
-        station_id = int(entry['StationID'])
-        updated_at = entry['SrcUpdateTime']
-        params = (train_id, station_id, delay_time, updated_at)
-        cursor.execute(insertion_sql, params)
+    train_id = int(entry['TrainNo'])
+    station_id = int(entry['StationID'])
+    updated_at = entry['SrcUpdateTime']
+    params = (train_id, station_id, delay_time, updated_at)
+    cursor.execute(insertion_sql, params)
 
 conn.commit()
 
